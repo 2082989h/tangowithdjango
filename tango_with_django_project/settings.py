@@ -19,6 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 't-wx-s-&yrjzl1(*(!!olpo2p%5(_$+)2^t&no(2=5j*7b1-0f'
 
+PASSWORD_HASHERS = (
+'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+)
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -100,3 +105,5 @@ TEMPLATE_DIRS = [
     # Don't forget to use absolute paths, not relative paths.
     TEMPLATE_PATH,
 ]
+
+LOGIN_URL = '/rango/login/'
