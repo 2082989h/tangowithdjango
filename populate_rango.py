@@ -48,7 +48,7 @@ def populate():
 
     student_cat = add_cat("Student name", 400, 128)
 
-    add_page(cat=studnet_cat,
+    add_page(cat=student_cat,
             title="Github",
             url="https://github.com/2082989h/")
 
