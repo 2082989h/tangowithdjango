@@ -70,19 +70,20 @@ def category(request, category_name_slug):
     context_dict['result_list'] = None
     context_dict['query'] = None
 
-    if request.method == 'POST':
-        query = request.POST['query'].strip()
-
-        if query:
-            # Run our Bing function to get the results list!
-            context_dict['result_list'] = run_query(query)
-            context_dict['query'] = query
 
     try:
+        if request.method == 'POST':
+            query = request.POST.get('query','').strip()
+
+            if query:
+                # Run our Bing function to get the results list!
+                context_dict['result_list'] = run_query(query)
+                context_dict['query'] = query
+
         # Can we find a category name slug with the given name?
         # If we can't, the .get() method raises a DoesNotExist exception.
         # So the .get() method returns one model instance or raises an exception.
-        category = Category.objects.get(slug=category_name_slug)
+		category = Category.objects.get(slug=category_name_slug)
         context_dict['category_name'] = category.name
         context_dict['category_name_slug'] = category_name_slug
 
